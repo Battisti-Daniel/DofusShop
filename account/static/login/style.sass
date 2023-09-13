@@ -1,0 +1,115 @@
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: 'Open Sans', sans-serif
+
+.mainContainer
+  width: 100%
+  min-height: 100vh
+  background: url("image/background.jpg") no-repeat center
+  background-size: cover
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+
+.formContainer
+  width: 100%
+  max-width: 600px
+  height: 700px
+  background-color: rgba(250, 250, 250, 0.9)
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  border-radius: 20px
+  padding: 20px
+  position: relative
+
+.formContainer h1
+  width: 100%
+  height: 50px
+  background-color: #A2DAD7
+  text-align: center
+  position: absolute
+  top: 15px
+  color: white
+
+.inputContainer
+  width: 100%
+  max-width: 300px
+  height: auto
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+
+.inputContainer .input
+  padding: 5px
+  margin: 10px 0
+  width: 200px
+  height: 40px
+  border: none
+  outline: none
+  transition: 0.4s ease-in-out
+  &:focus + label
+    font-weight: bold
+    font-size: 18px
+  &:focus
+    background-color: #ddd
+    box-shadow: 20px 8px 6px -3px rgba(0,0,0,0.1)
+
+.inputContainer .label
+  width: auto
+  position: relative
+  transform-origin: top left
+  text-align: center
+  transition: 0.4s ease-in-out
+
+.inputContainer span
+  display: flex
+  flex-direction: column-reverse
+
+.inputContainer input[type="submit"]
+  width: 100%
+  max-width: 170px
+  height: 50px
+  margin-top: 30px
+  border: none
+  outline: none
+  background-color: #A2DAD7
+  box-shadow: 15px 12px 3px -3px rgba(0, 0, 0, 0.3)
+  transition: 0.3s ease-in-out
+
+
+.inputContainer input[type="submit"]:hover,
+.inputContainer input[type="submit"]:focus
+  cursor: pointer
+  background-color: #bfe8e4
+  border-radius: 15px
+  box-shadow: 15px 12px 3px -3px rgba(0, 0, 0, 0.3)
+
+.errorList
+  list-style-type: none
+  color: red
+  font-weight: bold
+  font-size: 16px
+  text-align: center
+
+.btn
+  display: flex
+  flex-direction: column
+  padding: 5px
+  margin-top: 20px
+
+.btn button
+  border: none
+  background-color: inherit
+  padding: 10px
+
+.btn button a
+  text-decoration: none
+  color: inherit
+  &:hover
+    border-bottom: 1px solid black

@@ -1,0 +1,37 @@
+{% extends 'root.html' %}
+{% load static %}
+{% block title %} Register {% endblock %}
+{% block extra-head %}
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="mainContainer">
+    <form method="post" class="formContainer">
+        <h1>CREATE YOUR ACCOUNT</h1>
+        {% csrf_token %}
+        <div class="inputContainer">
+            {% for field in register_form %}
+            <span class="input-wrapper">
+                <input type="{{ field.field.widget.input_type }}" class="input" name="{{ field.name }}"
+                    id="{{ field.id_for_label }}" required="required" placeholder="{{ field.label }}">
+                <label for="{{ field.id_for_label }}" class="label">{{ field.label }}*</label>
+            </span>
+            {% if field.errors %}
+            <ul class="errorList">
+                {% for error in field.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endfor %}
+            <p class="term">By signing up, you confirm that you have read, understood and accepted the Terms and
+                Conditions of Use and the Privacy Policy, and that you understand your right to information.</p>
+            <input type="submit" value="Create Account">
+        </div>
+        <div class="btn">
+            <button type="button"><a href="/login/">Have an Account? <br> Login </a></button>
+        </div>
+    </form>
+</div>
+{% endblock %}

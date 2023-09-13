@@ -1,0 +1,38 @@
+{% extends 'root.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% block extra-head %}
+<link rel="stylesheet" href="{% static 'login/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="mainContainer">
+    <form method="post" novalidate class="formContainer">
+        <h1>Login</h1>
+        {% csrf_token %}
+        <div class="inputContainer">
+            {% for field in login_form %}
+            <span>
+                <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}"
+                    required="required" placeholder="{{ field.label }}" class="input">
+                <label for="{{ field.id_for_label }}" class="label">{{ field.label }}
+                </label>
+            </span>
+            {% endfor %}
+            {% if messages %}
+            <ul class="errorList">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            <input type="submit" value="Login">
+        </div>
+        <div class="btn">
+            <button type="button"><a href="/register/">Create an Account</a></button>
+            <button type="button"><a href="/register/">forgot password?</a></button>
+        </div>
+    </form>
+
+</div>
+{% endblock %}
