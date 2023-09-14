@@ -13,7 +13,7 @@ urlpatterns = [
 '''
 
 from account.views import register_view, login_view, logout_view
-from main.views import HomeView, DetailItem
+from main.views import HomeView, DetailItem, ItemUpdate
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
@@ -25,6 +25,7 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('home/', HomeView.as_view(), name='home'),
     path('detail/<uuid:pk>/', DetailItem.as_view(), name='detailItem'),
+    path('ItemUpdate/<uuid:pk>/', ItemUpdate.as_view(), name="ItemUpdate")
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

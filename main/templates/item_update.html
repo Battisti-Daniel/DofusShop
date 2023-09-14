@@ -1,0 +1,53 @@
+{% extends 'root.html' %}
+{% load static %}
+{% block title %} Edit {% endblock %}
+{% block extra-head %}
+    <link rel="stylesheet" href="{% static 'edit/style.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="mainContainer">
+    {% if user.authenticated %}
+        {% if object.account.id == user.id %}
+            <div class="cardContainer">
+            <img src="{{ object.cover.url }}" alt="ItemCover" class="cover">
+            {% if object.characteristics %}
+                <div class="characteristics">
+                        <p>STATUS</p>
+                        <aside class="status">
+                            <ul>
+                                {% for characteristic in object.characteristics.all %}
+                                    <li>{{ characteristic }}</li>
+                                {% endfor %}
+                            </ul>
+                            <span><img src="{% static 'image/Kama.png' %}" class="kama" alt="kamaAlt"> {{ object.value }}k</span>
+                        </aside>
+                </div>
+            {% endif %}
+                <div class="formInput">
+                    <form method="post" class="form">
+                        {% csrf_token %}
+                        <span>
+                            {{ form.value }}
+                            <label for="{{ form.value.id }}">Value</label>
+                        </span>
+                        <span>
+                            {{ form.server }}
+                            <label for="{{ form.server.id }}">Server</label>
+                        </span>
+                        <span>
+                            {{ form.characteristics }}
+                            <label for="{{ form.characteristics.id }}">Characteristics</label>
+                        </span>
+                 <span>
+                    <input type="submit" value="Change" class="change">
+                    <input type="submit" value="Cancel" class="cancel">
+                 </span>
+            </form>
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    </div>
+
+
+{% endblock %}
