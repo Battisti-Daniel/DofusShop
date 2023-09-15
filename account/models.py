@@ -55,7 +55,7 @@ class Item(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     value = models.IntegerField()
-    characteristics = models.ForeignKey(Characteristic, on_delete=models.CASCADE)
+    characteristics = models.ForeignKey(TypeCharacteristic, on_delete=models.CASCADE)
     cover = models.ImageField(upload_to='coverItem/')
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     server = models.ForeignKey(Server, on_delete=models.CASCADE)

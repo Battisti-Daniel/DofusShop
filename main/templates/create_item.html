@@ -2,14 +2,35 @@
 {% load static %}
 {% block title %} Edit {% endblock %}
 {% block extra-head %}
-    <link rel="stylesheet" href="{% static 'edit/style.css' %}">
+    <link rel="stylesheet" href="{% static 'Create/style.css' %}">
 {% endblock %}
 {% block content %}
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="formContainer">
         {% csrf_token %}
-        <table>
-        {{ form.as_table }}
-        </table>
+        <span>
+            {{ form.name }}
+            <label for="{{ id.name }}">Name</label>
+        </span>
+        <span>
+            {{ form.value }}
+            <label for="{{ id.value }}">Value</label>
+        </span>
+        <span>
+            {{ form.characteristics }}
+            <label for="{{ id.value }}">characteristics</label>
+        </span>
+        <span>
+            <input type="number" value="0">
+            <input type="submit" value="Add">
+                        </span>
+        <span>
+            {{ form.server }}
+            <label for="{{ id.server }}">Server</label>
+        </span>
+         <span>
+            {{ form.cover }}
+            <label for="{{ id.cover }}">Cover</label>
+        </span>
     <input type="submit" value="Create">
     </form>
 
