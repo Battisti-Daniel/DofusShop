@@ -19,7 +19,7 @@ class ItemModelForm(forms.ModelForm):
 class ItemModelCreateForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = '__all__'
+        fields = ('name', 'value', 'characteristics', 'server')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
