@@ -3,6 +3,7 @@
 {% block title %} Edit {% endblock %}
 {% block extra-head %}
     <link rel="stylesheet" href="{% static 'edit/style.css' %}">
+    <script src="{% static 'js/itemUpdate.js' %}"></script>
 {% endblock %}
 {% block content %}
     <div class="mainContainer">
@@ -40,7 +41,7 @@
                         </span>
                  <span>
                     <input type="submit" value="Change" class="change">
-                    <input type="submit" value="Cancel" class="cancel">
+                    <input type="button" data-url="{% url 'detailItem' pk=item.pk %}" onclick="redirectDetail()" value="Cancel" class="cancel">
                  </span>
             </form>
             </div>

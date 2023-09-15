@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Account, Item, Characteristic, Server
+from .models import Account, Item, Characteristic, Server, TypeCharacteristic
 
 
 def addAdm(*kwargs):
@@ -7,4 +7,4 @@ def addAdm(*kwargs):
         admin.site.register(model)
 
 
-addAdm(Account, Item, Characteristic, Server)
+addAdm(Account, Item, Characteristic, Server, TypeCharacteristic)

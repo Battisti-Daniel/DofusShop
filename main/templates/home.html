@@ -3,13 +3,14 @@
 {% block title %}Home{% endblock %}
 {% block extra-head %}
     <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    <script src="{% static 'js/itemUpdate.js' %}"></script>
 {% endblock %}
 {% block content %}
 
 <div class="mainContainer">
         <div>
             <nav>
-                TESTE
+                <button data-url="{% url 'createItem' %}" onclick="redirectDetail()" value="CREATE" class="cancel">Create</button>
             </nav>
         </div>
             <div class="cardContainer">

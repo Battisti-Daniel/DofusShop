@@ -23,13 +23,21 @@ class AccountAmount(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-class Characteristic(models.Model):
+class TypeCharacteristic(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{self.name}'
+
+
+class Characteristic(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    typeCharacteristic = models.ForeignKey(TypeCharacteristic, on_delete=models.CASCADE)
     value = models.IntegerField()
 
     def __str__(self):
-        return f'{self.value} - {self.name}'
+        return f'{self.typeCharacteristic}  {self.value}'
 
 
 class Server(models.Model):
@@ -47,7 +55,7 @@ class Item(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     value = models.IntegerField()
-    characteristics = models.ManyToManyField(Characteristic, blank=True)
+    characteristics = models.ForeignKey(Characteristic, on_delete=models.CASCADE)
     cover = models.ImageField(upload_to='coverItem/')
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     server = models.ForeignKey(Server, on_delete=models.CASCADE)

@@ -1,0 +1,16 @@
+{% extends 'root.html' %}
+{% load static %}
+{% block title %} Edit {% endblock %}
+{% block extra-head %}
+    <link rel="stylesheet" href="{% static 'edit/style.css' %}">
+{% endblock %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+    <input type="submit" value="Create">
+    </form>
+
+{% endblock %}
