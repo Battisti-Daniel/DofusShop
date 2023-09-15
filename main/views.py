@@ -44,5 +44,9 @@ class CreateItemView(CreateView):
     form_class = ItemModelCreateForm
     template_name = 'create_item.html'
 
+    def form_valid(self, form):
+        form.instance.account = self.request.user
+        return super().form_valid(form)
+
     def get_success_url(self):
         return sucess(self)

@@ -19,7 +19,7 @@ class ItemModelForm(forms.ModelForm):
 class ItemModelCreateForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ('name', 'value', 'characteristics', 'server','account')
+        fields = ('name', 'value', 'characteristics', 'server', 'cover')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -29,7 +29,3 @@ class ItemModelCreateForm(forms.ModelForm):
         self.fields['characteristics'].widget.choices = [(value, label) for value, label in
                                                          self.fields['characteristics'].widget.choices if value]
 
-        self.fields['account'].widget.choices = [(value, label) for value, label in
-                                                         self.fields['account'].widget.choices if value]
-
-        self.fields['account'].widget.attrs['disabled'] = 'disabled'
