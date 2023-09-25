@@ -3,14 +3,18 @@
 {% block title %}Home{% endblock %}
 {% block extra-head %}
     <link rel="stylesheet" href="{% static 'home/style.css' %}">
-    <script src="{% static 'js/itemUpdate.js' %}"></script>
+    <script src="{% static 'js/itemUpdate.js' %}" defer></script>
 {% endblock %}
 {% block content %}
 
 <div class="mainContainer">
         <div>
             <nav>
-                <button data-url="{% url 'createItem' %}" onclick="redirectDetail()" value="CREATE" class="cancel">Create</button>
+                <button data-url="{% url 'createItem' %}" onclick="redirect('{% url 'createItem' %}')" value="CREATE" class="cancel">Create</button>
+                <form method="get" action="{% url 'home' %}">
+                    <input type="text" name="search" placeholder="Search Item...">
+                    <button type="submit">Search</button>
+                </form>
             </nav>
         </div>
             <div class="cardContainer">
@@ -30,4 +34,18 @@
             {% endif %}
         </div>
     </div>
+    <aside>
+        <div>
+            <ul class="gridContainer">
+            {% if gear %}
+                <form method="get" action="{% url 'home' %}">
+                <input type="text" name="searchIcon" placeholder="Search Item..." hidden="hidden" value="" id="inputSearch">
+                        {% for icon in gear %}
+                        <button type="submit" onclick="searchBy()"><li><img src="{{ icon.cover.url }}" alt="icon" class="icon" id="{{ icon.name }}"></li></button>
+                    {% endfor %}
+                </form>
+            {% endif %}
+            </ul>
+        </div>
+    </aside>
 {% endblock %}

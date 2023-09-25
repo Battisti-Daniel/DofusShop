@@ -1,0 +1,19 @@
+{% extends 'root.html' %}
+{% load static %}
+{% block title %} Edit {% endblock %}
+{% block extra-head %}
+    <link rel="stylesheet" href="{% static 'delete/style.css' %}">
+    <script src="{% static 'js/itemUpdate.js' %}"></script>
+{% endblock %}
+{% block content %}
+    {% if object.account.id == user.id %}
+    <p>Confirm delete Item - {{ object.name }} - Server - {{ object.server }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="CONFIRM DELETE">
+        <input type="button" data-url="{% url 'detailItem' pk=object.pk %}" onclick="redirect('{% url 'detailItem' pk=object.pk %}')" value="Cancel" >
+    </form>
+    {% else %}
+        {% include 'denied.html' %}
+    {% endif %}
+{% endblock %}

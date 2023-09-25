@@ -23,21 +23,13 @@ class AccountAmount(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-class TypeCharacteristic(models.Model):
+class Gear(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=50)
+    cover = models.ImageField(upload_to='coverGear/')
 
     def __str__(self):
         return f'{self.name}'
-
-
-class Characteristic(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    typeCharacteristic = models.ForeignKey(TypeCharacteristic, on_delete=models.CASCADE)
-    value = models.IntegerField()
-
-    def __str__(self):
-        return f'{self.typeCharacteristic}  {self.value}'
 
 
 class Server(models.Model):
@@ -54,8 +46,8 @@ class Server(models.Model):
 class Item(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
-    value = models.IntegerField()
-    characteristics = models.ForeignKey(TypeCharacteristic, on_delete=models.CASCADE)
+    value = models.FloatField()
+    gear = models.ForeignKey(Gear, on_delete=models.CASCADE)
     cover = models.ImageField(upload_to='coverItem/')
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     server = models.ForeignKey(Server, on_delete=models.CASCADE)

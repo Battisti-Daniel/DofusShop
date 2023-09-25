@@ -1,0 +1,12 @@
+{% load static %}
+{% block extra-head %}
+    <link rel="stylesheet" href="{% static 'delete/style.css' %}">
+    <script src="{% static 'js/itemUpdate.js' %}"></script>
+{% endblock %}
+{% block content %}
+        <div class="ops">
+            <p> <a href="{% url 'home' %}">Go Home</a> </p>
+            <p>Uops... You can't acess this content... Take careful</p>
+            <img src="{% static 'image/Guard.png' %}" alt="guard">
+        </div>
+{% endblock %}

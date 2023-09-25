@@ -35,18 +35,17 @@
                             {{ form.server }}
                             <label for="{{ form.server.id }}">Server</label>
                         </span>
-                        <span>
-                            {{ form.characteristics }}
-                            <label for="{{ form.characteristics.id }}">Characteristics</label>
-                        </span>
                  <span>
+                    <input type="button" data-url="{% url 'deleteItem' pk=item.pk %}" onclick="redirect('{% url 'deleteItem' pk=item.pk %}')" value="Delete" class="cancel">
                     <input type="submit" value="Change" class="change">
-                    <input type="button" data-url="{% url 'detailItem' pk=item.pk %}" onclick="redirectDetail()" value="Cancel" class="cancel">
+                    <input type="button" data-url="{% url 'detailItem' pk=item.pk %}" onclick="redirect('{% url 'detailItem' pk=item.pk %}')" value="Cancel" class="cancel">
                  </span>
             </form>
             </div>
         {% endif %}
     </div>
+    {% else %}
+        {% include 'denied.html' %}
     {% endif %}
     </div>
 

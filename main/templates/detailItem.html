@@ -26,20 +26,8 @@
                     {% endfor %}
                 </div>
                 </div>
-                <div class="statusContainer">
-                    {% if object.characteristics %}
-                        <p>STATUS</p>
-                        <aside class="status">
-                            <ul>
-                                {% for characteristic in object.characteristics.all %}
-                                    <li>{{ characteristic }}</li>
-                                {% endfor %}
-                            </ul>
-                        </aside>
-                    {% endif %}
-                </div>
                 {% if user.authenticated and object.account.id == user.id %}
-                    <a href="{% url 'ItemUpdate' pk=object.pk %}"><button >EDIT ITEM</button></a>
+                    <a href="{% url 'ItemUpdate' pk=object.pk %}"><button>EDIT ITEM</button></a>
                 {% endif %}
             {% endif %}
         </div>

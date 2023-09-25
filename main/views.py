@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 
-from account.models import Item
-from django.views.generic import ListView, DetailView, UpdateView, CreateView
+from account.models import Item, Gear
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from main.forms import ItemModelForm, ItemModelCreateForm
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -21,7 +21,17 @@ class HomeView(ListView):
         search = self.request.GET.get('search')
         if search:
             item = item.filter(name__icontains=search)
+        if search is None:
+            item = super().get_queryset().order_by('updated_at')
+            search = self.request.GET.get('searchIcon')
+            if search:
+                item = item.filter(gear__name__icontains=search)
         return item
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['gear'] = Gear.objects.all()
+        return context
 
 
 class DetailItemView(DetailView):
@@ -29,6 +39,7 @@ class DetailItemView(DetailView):
     template_name = 'detailItem.html'
 
 
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class ItemUpdateView(UpdateView):
     model = Item
     form_class = ItemModelForm
@@ -50,3 +61,10 @@ class CreateItemView(CreateView):
 
     def get_success_url(self):
         return sucess(self)
+
+
+@method_decorator(login_required(login_url='login'), name='dispatch')
+class DeleteItemView(DeleteView):
+    model = Item
+    template_name = "item_delete.html"
+    success_url = "/home/"

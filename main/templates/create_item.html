@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'Create/style.css' %}">
 {% endblock %}
 {% block content %}
-    <form method="post" enctype="multipart/form-data" class="formContainer">
+    <form method="post" class="formContainer" enctype="multipart/form-data">
         {% csrf_token %}
         <span>
             {{ form.name }}
@@ -14,24 +14,27 @@
         <span>
             {{ form.value }}
             <label for="{{ id.value }}">Value</label>
+            {% if form.value.errors %}
+                <ul class="errorList">
+                    {% for error in form.value.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </span>
-        <span>
-            {{ form.characteristics }}
-            <label for="{{ id.value }}">characteristics</label>
-        </span>
-        <span>
-            <input type="number" value="0">
-            <input type="submit" value="Add">
-                        </span>
         <span>
             {{ form.server }}
             <label for="{{ id.server }}">Server</label>
+        </span>
+        <span>
+            {{ form.gear }}
         </span>
          <span>
             {{ form.cover }}
             <label for="{{ id.cover }}">Cover</label>
         </span>
-    <input type="submit" value="Create">
+        {% if form.errors %}
+        {% endif %}
+        <input type="submit" value="Create">
     </form>
-
 {% endblock %}
