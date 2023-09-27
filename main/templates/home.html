@@ -6,8 +6,7 @@
     <script src="{% static 'js/itemUpdate.js' %}" defer></script>
 {% endblock %}
 {% block content %}
-
-<div class="mainContainer">
+    <div class="mainContainer">
         <div>
             <nav>
                 <button data-url="{% url 'createItem' %}" onclick="redirect('{% url 'createItem' %}')" value="CREATE" class="cancel">Create</button>
@@ -22,7 +21,7 @@
                 {% for i in item %}
                     <div class="card">
                         <div class="cover">
-                            <a href="{% url 'detailItem' i.pk %}">
+                            <a href="{% url 'item_detail' i.pk %}">
                                 <img src="{{ i.cover.url }}" alt="cover">
                             </a>
                                 <span>{{ i.name }}</span>

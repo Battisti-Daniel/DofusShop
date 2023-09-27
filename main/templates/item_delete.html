@@ -2,18 +2,23 @@
 {% load static %}
 {% block title %} Edit {% endblock %}
 {% block extra-head %}
-    <link rel="stylesheet" href="{% static 'delete/style.css' %}">
-    <script src="{% static 'js/itemUpdate.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'item_delete/style.css' %}">
+    <script src="{% static 'item_delete/item_delete.js' %}"></script>
 {% endblock %}
 {% block content %}
     {% if object.account.id == user.id %}
-    <p>Confirm delete Item - {{ object.name }} - Server - {{ object.server }}</p>
-    <form method="post">
-        {% csrf_token %}
-        <input type="submit" value="CONFIRM DELETE">
-        <input type="button" data-url="{% url 'detailItem' pk=object.pk %}" onclick="redirect('{% url 'detailItem' pk=object.pk %}')" value="Cancel" >
-    </form>
+        <div class="container">
+            <div class="cardContainer">
+                <img src="{{ object.cover.url }}" alt="ItemCover" class="cover">
+                <h1>You are about to delete item <strong>{{ object.name }}</strong>, are you sure?</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="CONFIRM DELETE" class="confirm">
+                    <input type="button" class="cancel" data-url="{% url 'item_detail' pk=object.pk %}" onclick="redirect('{% url 'item_detail' pk=object.pk %}')" value="Cancel" >
+                </form>
+            </div>
+        </div>
     {% else %}
-        {% include 'denied.html' %}
+        {% include 'denie.html' %}
     {% endif %}
 {% endblock %}

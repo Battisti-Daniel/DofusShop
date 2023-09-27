@@ -2,50 +2,50 @@
 {% load static %}
 {% block title %} Edit {% endblock %}
 {% block extra-head %}
-    <link rel="stylesheet" href="{% static 'edit/style.css' %}">
+    <link rel="stylesheet" href="{% static 'item_update/style.css' %}">
     <script src="{% static 'js/itemUpdate.js' %}"></script>
 {% endblock %}
 {% block content %}
     <div class="mainContainer">
-    {% if user.authenticated %}
-        {% if object.account.id == user.id %}
+    {% if user.authenticated and object.account.id == user.id%}
             <div class="cardContainer">
-            <img src="{{ object.cover.url }}" alt="ItemCover" class="cover">
-            {% if object.characteristics %}
-                <div class="characteristics">
-                        <p>STATUS</p>
-                        <aside class="status">
-                            <ul>
-                                {% for characteristic in object.characteristics.all %}
-                                    <li>{{ characteristic }}</li>
-                                {% endfor %}
-                            </ul>
-                            <span><img src="{% static 'image/Kama.png' %}" class="kama" alt="kamaAlt"> {{ object.value }}k</span>
-                        </aside>
+                <div class="card">
+                    <img src="{{ object.cover.url }}" alt="ItemCover" class="cover">
+                    <span><img src="{% static 'image/Kama.png' %}" class="kama" alt="kamaAlt"> {{ object.value }}k</span>
+                    <div class="formInput">
+                        <form method="post" class="form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="inputForm">
+                                <span>
+                                    <input type="file" accept="image/*" name="cover" id="id_cover">
+                                    <label for="{{ form.value.id }}">Image</label>
+                                </span>
+                                <span>
+                                    {{ form.value }}
+                                    <label for="{{ form.value.id }}">Value</label>
+                                </span>
+                                <span>
+                                    {{ form.server }}
+                                    <label for="{{ form.server.id }}">Server</label>
+                                </span>
+                                <span>
+                                    {{ form.gear }}
+                                    <label for="{{ form.gear.id }}">Gear</label>
+                                </span>
+                            </div>
+                            <span>
+                                <input type="submit" value="Change" class="change">
+                                <input type="button" data-url="{% url 'item_detail' pk=item.pk %}" onclick="redirect('{% url 'item_detail' pk=item.pk %}')" value="Cancel" class="return">
+                            </span>
+                            <span>
+                                <input type="button" data-url="{% url 'deleteItem' pk=item.pk %}" onclick="redirect('{% url 'deleteItem' pk=item.pk %}')" value="Delete" class="cancel">
+                            </span>
+                    </form>
                 </div>
-            {% endif %}
-                <div class="formInput">
-                    <form method="post" class="form">
-                        {% csrf_token %}
-                        <span>
-                            {{ form.value }}
-                            <label for="{{ form.value.id }}">Value</label>
-                        </span>
-                        <span>
-                            {{ form.server }}
-                            <label for="{{ form.server.id }}">Server</label>
-                        </span>
-                 <span>
-                    <input type="button" data-url="{% url 'deleteItem' pk=item.pk %}" onclick="redirect('{% url 'deleteItem' pk=item.pk %}')" value="Delete" class="cancel">
-                    <input type="submit" value="Change" class="change">
-                    <input type="button" data-url="{% url 'detailItem' pk=item.pk %}" onclick="redirect('{% url 'detailItem' pk=item.pk %}')" value="Cancel" class="cancel">
-                 </span>
-            </form>
             </div>
-        {% endif %}
     </div>
     {% else %}
-        {% include 'denied.html' %}
+        {% include 'denie.html' %}
     {% endif %}
     </div>
 

@@ -1,0 +1,32 @@
+{% extends "root.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block extra-head %}
+    <link rel="stylesheet" href="{% static 'item_detail/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="mainContainer">
+        <div class="cardContainer">
+            {% if object %}
+                    <div class="infoUser">
+                        <img src="{{ object.cover.url }}" alt="ItemCover" class="cover">
+                        <p>SELLER <h3>{{ object.account }}</h3></p>
+                        <p class="kamasShow"><img src="{% static 'image/Kama.png' %}" class="kama" alt="kamaAlt"> <strong>{{ object.value }}K </strong></p>
+                        <div>
+                            {% for stars in "12345"|make_list%}
+                                {% if object.account.stars >= forloop.counter %}
+                                <img src="{% static 'image/starfill.png' %}" alt="star">
+                                {% else %}
+                                <img src="{% static 'image/star.png' %}" alt="star">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% if user.authenticated and object.account.id == user.id %}
+                            <a href="{% url 'ItemUpdate' pk=object.pk %}"><button>EDIT ITEM</button></a>
+                        {% endif %}
+                    </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

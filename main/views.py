@@ -19,8 +19,12 @@ class HomeView(ListView):
     def get_queryset(self):
         item = super().get_queryset().order_by('updated_at')
         search = self.request.GET.get('search')
+
+        # search by search bar
         if search:
             item = item.filter(name__icontains=search)
+
+        # search by icons
         if search is None:
             item = super().get_queryset().order_by('updated_at')
             search = self.request.GET.get('searchIcon')
@@ -28,6 +32,7 @@ class HomeView(ListView):
                 item = item.filter(gear__name__icontains=search)
         return item
 
+    # get context to use a model Gear
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['gear'] = Gear.objects.all()
@@ -36,7 +41,7 @@ class HomeView(ListView):
 
 class DetailItemView(DetailView):
     model = Item
-    template_name = 'detailItem.html'
+    template_name = 'item_detail.html'
 
 
 @method_decorator(login_required(login_url='login'), name='dispatch')
@@ -47,7 +52,6 @@ class ItemUpdateView(UpdateView):
 
     def get_success_url(self):
         return sucess(self)
-
 
 @method_decorator(login_required(login_url='login'), name='dispatch')
 class CreateItemView(CreateView):

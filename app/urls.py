@@ -24,8 +24,8 @@ urlpatterns = [
     path('register/', register_view, name='register'),
     path('logout/', logout_view, name='logout'),
     path('home/', HomeView.as_view(), name='home'),
-    path('detail/<uuid:pk>/', DetailItemView.as_view(), name='detailItem'),
-    path('ItemUpdate/<uuid:pk>/', ItemUpdateView.as_view(), name="ItemUpdate"),
+    path('detail/<uuid:pk>/', DetailItemView.as_view(), name='item_detail'),
+    path('Update/<uuid:pk>/', ItemUpdateView.as_view(), name="ItemUpdate"),
     path('create/', CreateItemView.as_view(), name="createItem"),
     path('delete/<uuid:pk>/', DeleteItemView.as_view(), name="deleteItem"),
 

@@ -6,28 +6,31 @@
 .headerContainer
   width: 100%
   height: 120px
-  background-color: #8CA400
+  background-color: #8FA800
   margin-left: auto
   margin-right: auto
-
-.ankama
-  width: 150px
-  height: 80px
-  margin-left: 100px
-
-.dofus
-  height: 100%
-  width: 200px
-  margin-left: 50px
 
 .navContainer
   width: 100%
   height: 100%
+
+
+.navItems
   display: flex
   align-items: center
   justify-content: space-between
+  margin-left: 150px
 
-.list
+.navItems img
+  width: 150px
+  height: auto
+  border-radius: 40px
+
+.navItems a
+  display: inline-block
+  padding: 10px
+
+.navList
   display: flex
   align-items: center
   justify-content: center
@@ -35,7 +38,7 @@
   gap: 60px
   margin-right: 30px
 
-.list li
+.navList li
   display: flex
   align-items: center
   background-color: #ddd
@@ -50,7 +53,7 @@
     transform: translateX(-15px)
     box-shadow: 33px 8px 4px 0px rgba(0,0,0,0.1)
 
-.list a
+.navList a
   font-size: 18px
   text-decoration: none
   color: inherit
@@ -58,12 +61,11 @@
 .footer
   display: flex
   align-items: center
-  justify-content: center
+  justify-content: space-between
+  padding: 10px
   background-color: #ddd
   transition: 0.3s ease-in-out
-  position: fixed
   bottom: 0
-  left: 0
   width: 100%
 
 .footer a
@@ -71,3 +73,6 @@
   text-decoration: inherit
   &:hover
     color: black
+
+.footer p
+  margin: 0 5px
