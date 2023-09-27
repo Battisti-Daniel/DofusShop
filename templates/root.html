@@ -20,7 +20,7 @@
             <nav class="navContainer">
                 <div class="navItems">
                     <a href="https://www.dofus.com/pt" target="_blank"><img src="{% static 'root/image/logo.png' %}" alt="Cover"></a>
-                    <a href="{% url 'home' %}"><img src="{% static 'root/image/../static/root/LogoDofus.png' %}" alt="Cover"></a>
+                    <a href="{% url 'home' %}"><img src="{% static 'root/image/LogoDofus.png' %}" alt="Cover"></a>
                     <ul class="navList">
                         {% if not user.is_authenticated %}
                             <a href="/login/"><li>Login</li></a>
