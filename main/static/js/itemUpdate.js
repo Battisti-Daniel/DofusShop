@@ -2,6 +2,10 @@ function redirect(url) {
     window.location.href = url;
 }
 
+function handleFormSubmit(ev){
+    ev.preventDefault()
+}
+
 function icons() {
         const icons = document.querySelectorAll('.icon');
 
@@ -23,13 +27,9 @@ function icons() {
 
 }
 
+
+
 function searchBy() {
-
-    const ev = document.getElementById("submit")
-    ev.addEventListener("click",ev=>{
-        ev.preventDefault()
-    })
-
     const icons = document.querySelectorAll(".icon");
     icons.forEach(selected => {
         if (selected.classList.contains("selected")) {
