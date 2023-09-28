@@ -10,12 +10,18 @@ main {
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .mainContainerContent {
   width: 100%;
   height: 100%;
   font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .navBody {
@@ -82,7 +88,7 @@ main {
   min-width: 150px;
 }
 
-.gridContainer form ul {
+.gridContainer ul {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,6 +149,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.gridContainer form button {
+  border: none;
+  background-color: inherit;
+  margin-left: -5px;
 }
 
 .create {

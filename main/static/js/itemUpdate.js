@@ -23,15 +23,22 @@ function icons() {
 
 }
 
-function searchBy(){
-    const icons = document.querySelectorAll(".icon")
-    icons.forEach(selected =>{
-        if(selected.classList.contains("selected")){
-            search = document.getElementById("inputSearch")
-            search.setAttribute("value",selected.id)
-        }
+function searchBy() {
+
+    const ev = document.getElementById("submit")
+    ev.addEventListener("click",ev=>{
+        ev.preventDefault()
     })
+
+    const icons = document.querySelectorAll(".icon");
+    icons.forEach(selected => {
+        if (selected.classList.contains("selected")) {
+            const search = document.getElementById("inputSearch");
+            search.setAttribute("value", selected.id);
+        }
+    });
 }
+
 
 
 
