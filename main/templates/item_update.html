@@ -40,10 +40,10 @@
                             <span>
                                 <input type="button" data-url="{% url 'deleteItem' pk=item.pk %}" onclick="redirect('{% url 'deleteItem' pk=item.pk %}')" value="Delete" class="cancel">
                             </span>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-    </div>
     {% else %}
         {% include 'denie.html' %}
     {% endif %}

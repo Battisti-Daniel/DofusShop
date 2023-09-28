@@ -7,44 +7,60 @@
 {% endblock %}
 {% block content %}
     <div class="mainContainer">
-        <div>
-            <nav>
-                <button data-url="{% url 'createItem' %}" onclick="redirect('{% url 'createItem' %}')" value="CREATE" class="cancel">Create</button>
-                <form method="get" action="{% url 'home' %}">
-                    <input type="text" name="search" placeholder="Search Item...">
-                    <button type="submit">Search</button>
-                </form>
-            </nav>
-        </div>
-            <div class="cardContainer">
-            {% if item %}
-                {% for i in item %}
-                    <div class="card">
-                        <div class="cover">
-                            <a href="{% url 'item_detail' i.pk %}">
-                                <img src="{{ i.cover.url }}" alt="cover">
-                            </a>
-                                <span>{{ i.name }}</span>
-                                <span><strong>{{ i.account }} - {{ i.server }}</strong></span>
+        <div class="mainContainerContent">
+            <div class="navBody">
+                <nav>
+                    <form method="get" action="{% url 'home' %}" class="form">
+                        <input type="text" name="search" placeholder="Search Item...">
+                        <button type="submit">Search</button>
+                    </form>
+                </nav>
+            </div>
+        {% if item %}
+            <div class="contentContainer">
+                <div class="cardContainer">
+                    {% if item %}
+                        {% for i in item %}
+                            <div class="card">
+                                <div class="cover">
+                                    <a href="{% url 'item_detail' i.pk %}">
+                                        <img src="{{ i.cover.url }}" alt="cover">
+                                    </a>
+                                    <span>
+                                        {{ i.name }}
+                                    </span>
+                                    <span>
+                                        <strong>{{ i.account }} - {{ i.server }}</strong>
+                                    </span>
+                                </div>
+                                <span>
+                                    <img src="../static/image/Kama.png" class="kama" alt="kamaAlt"> {{ i.value }}k
+                                </span>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                    <aside class="aside">
+                        {% if user.is_authenticated %}
+                                <button data-url="{% url 'createItem' %}" onclick="redirect('{% url 'createItem' %}')" value="CREATE" class="create">Create</button>
+                        {% endif %}
+                        <div class="asideContent">
+                            <ul class="gridContainer">
+                            {% if gear %}
+                                <form method="get" action="{% url 'home' %}">
+                                    <input type="text" name="searchIcon" placeholder="Search Item..." hidden="hidden" value="" id="inputSearch">
+                                    {% for icon in gear %}
+                                        <li><button type="submit" onclick="searchBy()"><img src="{{ icon.cover.url }}" alt="icon" class="icon" id="{{ icon.name }}"></button></li>
+                                    {% endfor %}
+                                </form>
+                            {% endif %}
+                            </ul>
                         </div>
-                        <span><img src="../static/image/Kama.png" class="kama" alt="kamaAlt"> {{ i.value }}k</span>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
+                    </aside>
+                </div>
+            </div>
+        {% else %}
+            {% include 'notFound.html' %}
+        {% endif %}
     </div>
-    <aside>
-        <div>
-            <ul class="gridContainer">
-            {% if gear %}
-                <form method="get" action="{% url 'home' %}">
-                <input type="text" name="searchIcon" placeholder="Search Item..." hidden="hidden" value="" id="inputSearch">
-                        {% for icon in gear %}
-                        <button type="submit" onclick="searchBy()"><li><img src="{{ icon.cover.url }}" alt="icon" class="icon" id="{{ icon.name }}"></li></button>
-                    {% endfor %}
-                </form>
-            {% endif %}
-            </ul>
-        </div>
-    </aside>
 {% endblock %}

@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def sucess(self):
-    return reverse_lazy('detailItem', kwargs={'pk': self.object.pk})
+    return reverse_lazy('item_detail', kwargs={'pk': self.object.pk})
 
 
 class HomeView(ListView):

@@ -10,7 +10,7 @@
         <div class="container">
             <div class="cardContainer">
                 <img src="{{ object.cover.url }}" alt="ItemCover" class="cover">
-                <h1>You are about to delete item <strong>{{ object.name }}</strong>, are you sure?</h1>
+                <h1>You are about to delete item <strong style="text-decoration: underline">{{ object.name }}</strong>, are you sure?</h1>
                 <form method="post">
                     {% csrf_token %}
                     <input type="submit" value="CONFIRM DELETE" class="confirm">
