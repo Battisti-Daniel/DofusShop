@@ -49,9 +49,11 @@
                             {% if gear %}
                                 <form method="get" action="{% url 'home' %}">
                                     <input type="text" name="searchIcon" placeholder="Search Item..." hidden="hidden" value="" id="inputSearch">
-                                    {% for icon in gear %}
-                                        <li><button type="submit" onclick="searchBy()"><img src="{{ icon.cover.url }}" alt="icon" class="icon" id="{{ icon.name }}"></button></li>
-                                    {% endfor %}
+                                    <ul>
+                                        {% for icon in gear %}
+                                            <li><button type="submit" onclick="searchBy()"><img src="{{ icon.cover.url }}" alt="icon" class="icon" id="{{ icon.name }}"></button></li>
+                                        {% endfor %}
+                                    </ul>
                                 </form>
                             {% endif %}
                             </ul>

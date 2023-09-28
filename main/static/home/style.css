@@ -1,39 +1,30 @@
 main {
   height: 100%;
-  width: 100%;
   background-image: url("../item_detail/background.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
+.mainContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .mainContainerContent {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 20px;
-  flex-wrap: wrap;
-  flex-direction: column;
 }
 
-.mainContainer {
+.navBody {
   width: 100%;
-  height: 100%;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
-.contentContainer {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  padding: 50px;
 }
 
 .cover {
@@ -41,6 +32,15 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.contentContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .cardContainer {
@@ -58,23 +58,15 @@ main {
   padding: 50px;
 }
 
-.navBody {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 50px;
-}
-
 .aside {
   background-color: rgba(240, 230, 230, 0.8);
-  width: 20%;
+  min-width: 300px;
+  width: auto;
   height: 500px;
   border: 1px solid #dddddd;
   border-radius: 20px;
-  padding: 50px;
-  margin: 40px 70px;
+  padding: 30px;
+  margin: 40px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,10 +82,18 @@ main {
   min-width: 150px;
 }
 
-.gridContainer form li {
-  margin: 10px 0;
+.gridContainer form ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: auto;
   width: auto;
+  gap: 10px;
+}
+
+.gridContainer form li {
+  width: auto;
+  height: auto;
 }
 
 .gridContainer form {
@@ -103,6 +103,7 @@ main {
   width: 100%;
   height: 100%;
   gap: 10px;
+  margin-right: 50px;
 }
 
 .card {
