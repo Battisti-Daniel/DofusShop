@@ -1,0 +1,10 @@
+{% extends 'root.html' %}
+{% block title %} Detalhes da Conta {% endblock %}
+{% block extra-head %}
+{% endblock %}
+{% block content %}
+  <h2>Detalhes da Conta</h2>
+  <p><strong>Username:</strong> {{ account.username }}</p>
+  <p><strong>Email:</strong> {{ account.email }}</p>
+  <a href="{% url 'accountUpdate' user.pk%}">Editar Conta</a>
+{% endblock %}

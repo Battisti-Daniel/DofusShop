@@ -42,7 +42,11 @@
                 </div>
                     <aside class="aside">
                         {% if user.is_authenticated %}
+                        <div>
                                 <button data-url="{% url 'createItem' %}" onclick="redirect('{% url 'createItem' %}')" value="CREATE" class="create">Create</button>
+                                <button data-url="{% url 'conjuntoCreate' %}" onclick="redirect('{% url 'conjuntoCreate' %}')" value="CREATE" class="create">Cria Conjunto</button>
+                                <button data-url="{% url 'transacoesCreate' %}" onclick="redirect('{% url 'transacoesCreate' %}')" value="CREATE" class="create">Criar Transação</button>
+                            </div>
                         {% endif %}
                         <div class="asideContent">
                             <ul class="gridContainer">

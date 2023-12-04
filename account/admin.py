@@ -1,10 +1,5 @@
 from django.contrib import admin
-from .models import Account, Item, Gear, Server
+from .models import Account, Item, Gear, Server, Transacao, Conjunto
 
 
-def addAdm(*kwargs):
-    for model in kwargs:
-        admin.site.register(model)
-
-
-addAdm(Account, Item, Gear, Server)
+admin.site.register([Account, Item, Gear, Server,Transacao, Conjunto])

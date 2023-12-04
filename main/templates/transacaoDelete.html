@@ -1,0 +1,10 @@
+{% extends 'root.html' %}
+{% block title %} Confirmar Deleção da Transação {% endblock %}
+{% block content %}
+  <h2>Confirmar Deleção da Transação {{ transacao.pk }}</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button type="submit">Confirmar Deleção</button>
+  </form>
+  <a href="{% url 'transacaoList' %}">Cancelar</a>
+{% endblock %}

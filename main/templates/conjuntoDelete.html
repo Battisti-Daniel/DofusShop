@@ -1,0 +1,11 @@
+{% extends 'root.html' %}
+{% block title %} Deletar Conjunto {% endblock %}
+{% block content %}
+  <h2>Deletar Conjunto</h2>
+  <p>Tem certeza de que deseja deletar o conjunto "{{ conjunto.name }}"?</p>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button type="submit">Confirmar Deleção</button>
+  </form>
+  <a href="{% url 'conjuntoList' %}">Cancelar</a>
+{% endblock %}

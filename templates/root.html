@@ -27,13 +27,14 @@
                             <a href="/register/"><li>Register</li></a>
                         {% else %}
                             <a href="/logout/"><li>Logout</li></a>
+                            <a href="{% url 'accountDetail' %}"><li>Account</li></a>
                         {% endif %}
                     </ul>
                 </div>
             </nav>
         </header>
 
-        <main>
+        <main class="mainContent">
             {% block content %}
             {% endblock %}
         </main>

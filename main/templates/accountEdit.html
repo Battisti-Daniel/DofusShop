@@ -1,0 +1,17 @@
+{% extends 'root.html' %}
+{% load static %}
+{% block title %} Account Update {% endblock %}
+{% block extra-head %}
+{% endblock %}
+{% block content %}
+  <h2>Atualizar Perfil</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+      <button type="submit">Salvar Alterações</button>
+      <a href="{% url 'deleteAccount' user.pk %}"><button type="button">Deletar Conta</button></a>
+    </div>
+  </form>
+  <a href="{% url 'home' %}">Cancelar</a>
+{% endblock %}

@@ -91,4 +91,10 @@
   margin: 0 5px;
 }
 
+.mainContent{
+  width: 100%;
+  min-height: calc(100vh - 10vh);
+  height: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */

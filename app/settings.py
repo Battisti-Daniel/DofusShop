@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dofusshop',
-        'USER': 'postgres',
-        'PASSWORD': '070304aBc',
+        'USER': 'root',
+        'PASSWORD': '511danielB044##',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '3306',
     }
 }
 

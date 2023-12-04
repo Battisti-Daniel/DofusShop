@@ -1,0 +1,15 @@
+{% extends 'root.html' %}
+{% block title %} Transações {% endblock %}
+{% block content %}
+  <h2>Transações</h2>
+  {% if transacoes %}
+    <ul>
+      {% for transacao in transacoes %}
+        <li><a href="{% url 'transacaoDetail' transacao.pk %}">Transação {{ transacao.pk }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h1>NENHUMA TRANSACAO ENCONTRADA</h1>
+  {% endif %}
+  <a href="{% url 'transacoesCreate' %}">Criar Nova Transação</a>
+{% endblock %}

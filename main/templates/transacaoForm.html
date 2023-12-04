@@ -1,0 +1,12 @@
+{% extends 'root.html' %}
+{% block title %} Criar/Editar Transação {% endblock %}
+{% block content %}
+  <h2>Criar/Editar Transação</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Criar Transacao</button>
+    <a href="{% url 'transacaoList' %}"><button type="button">Ver transações</button></a>
+  </form>
+  <a href="{% url 'home' %}">Cancelar</a>
+{% endblock %}

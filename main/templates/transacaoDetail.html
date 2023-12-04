@@ -1,0 +1,13 @@
+{% extends 'root.html' %}
+{% block title %} Detalhes da Transação {% endblock %}
+{% block content %}
+  <h2>Detalhes da Transação {{ transacao.pk }}</h2>
+  <p><strong>Comprador:</strong> {{ transacao.comprador }}</p>
+  <p><strong>Vendedor:</strong> {{ transacao.vendedor }}</p>
+  <p><strong>Status:</strong> {{ transacao.status }}</p>
+  <p><strong>Estágio:</strong> {{ transacao.estagio }}</p>
+  <p><strong>Descrição:</strong> {{ transacao.descricao }}</p>
+  <a href="{% url 'transacaoUpdate' transacao.pk %}">Editar Transação</a>
+  <a href="{% url 'transacaoDelete' transacao.pk %}">Deletar Transação</a>
+  <a href="{% url 'transacaoList' %}">Voltar para a Lista de Transações</a>
+{% endblock %}

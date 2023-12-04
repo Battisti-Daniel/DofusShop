@@ -1,0 +1,14 @@
+{% extends 'root.html' %}
+{% block title %} Detalhes do Conjunto {% endblock %}
+{% block content %}
+  <h2>{{ conjunto.nome }}</h2>
+  <p><strong>Descrição:</strong> {{ conjunto.descricao }}</p>
+  <p><strong>Itens:</strong></p>
+  <ul>
+    {% for item in conjunto.itens.all %}
+      <li>{{ item.name }} - <img src="{{ item.cover.url }}" alt="{{ item.nome }}"></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'conjuntoUpdate' conjunto.pk %}">Editar Conjunto</a>
+  <a href="{% url 'conjuntoDelete' conjunto.pk %}">Deletar Conjunto</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'root.html' %}
+{% block title %} {% if form.instance.pk %}Editar{% else %}Criar{% endif %} Conjunto {% endblock %}
+{% block content %}
+  <h2>{% if form.instance.pk %}Editar{% else %}Criar{% endif %} Conjunto</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if form.instance.pk %}Salvar Alterações{% else %}Criar Conjunto{% endif %}</button>
+    <a href="{% url 'conjuntoList' %}"><button type="button">Conjuntos</button></a>
+  </form>
+  <a href="{% url 'home' %}">Cancelar</a>
+{% endblock %}

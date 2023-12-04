@@ -1,0 +1,22 @@
+{% extends 'root.html' %}
+{% block title %} Conjuntos {% endblock %}
+{% block content %}
+  <h2>Conjuntos</h2>
+  {% if conjuntos %}
+    <ul>
+      {% for conjunto in conjuntos %}
+      <div>
+        <li><a href="{% url 'conjuntoDetail' conjunto.pk %}">{{ conjunto.nome }}</a></li>
+        <ul>
+          {% for item in conjunto.itens.all %}
+          <li><img src="{{ item.cover.url }}" alt="{{ item.nome }}"></li>
+          {% endfor %}
+        </ul>
+    </div>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h1>NENHUM CONJUNTO ENCONTRADO</h1>
+  {% endif %}
+  <a href="{% url 'conjuntoCreate' %}">Criar Novo Conjunto</a>
+{% endblock %}

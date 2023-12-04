@@ -1,5 +1,6 @@
 from django import forms
 from account.models import Item
+from account.models import Account,Conjunto, Transacao
 
 
 class MyFloatInput(forms.TextInput):
@@ -49,3 +50,13 @@ class ItemModelCreateForm(forms.ModelForm):
         # remove first field because = -------
         self.fields['gear'].widget.choices = [(value, label) for value, label in self.fields['gear'].widget.choices
                                               if value]
+        
+class ConjuntoForm(forms.ModelForm):
+    class Meta:
+        model = Conjunto
+        fields = ['nome', 'descricao', 'itens', 'user']
+
+class TransacaoForm(forms.ModelForm):
+    class Meta:
+        model = Transacao
+        fields = ['comprador', 'vendedor', 'status', 'estagio', 'descricao']

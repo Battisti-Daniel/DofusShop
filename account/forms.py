@@ -2,7 +2,7 @@ import re
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from account.models import Account
+from account.models import Account, Conjunto
 
 
 class AccountRegistrationForm(UserCreationForm):
@@ -34,3 +34,11 @@ class AccountRegistrationForm(UserCreationForm):
         if not re.search(r"^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$", email):
             raise forms.ValidationError(f"The email {email} doesn't seem valid")
         return email
+
+class AccountUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = ['username', 'email',]
+
+    new_password = forms.CharField(widget=forms.PasswordInput, required=False)
+    
